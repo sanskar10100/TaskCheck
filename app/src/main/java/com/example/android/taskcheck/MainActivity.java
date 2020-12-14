@@ -63,6 +63,10 @@ public class MainActivity extends AppCompatActivity {
 		}
 	}
 
+	/**
+	 * Displays a snackbar to the user when launching the app for the first time or when clicked on
+	 * the menu button. The snackbar display info on how to mark a task as completed
+	 */
 	private void displayIntroSnackbar() {
 		Snackbar.make(findViewById(R.id.parent_view), "Long click on a task to mark as completed!", Snackbar.LENGTH_LONG)
 				.setAction("CLOSE", view -> {
@@ -128,7 +132,8 @@ public class MainActivity extends AppCompatActivity {
 				displayIntroSnackbar();
 				return true;
 			}
-			default: return super.onOptionsItemSelected(item);
+			default:
+				return super.onOptionsItemSelected(item);
 		}
 	}
 }

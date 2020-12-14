@@ -4,14 +4,14 @@
 
     <item
         android:id="@+id/redisplay_intro"
+        android:icon="@drawable/ic_baseline_mark_chat_unread_24"
         android:title="@string/how_do_i_mark_task_as_complete_again"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_baseline_mark_chat_unread_24" />
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/menu_action_clear_all"
+        android:icon="@drawable/ic_baseline_clear_all_24"
         android:title="@string/clear_all"
-        app:showAsAction="always"
-        android:icon="@drawable/ic_baseline_clear_all_24" />
+        app:showAsAction="always" />
 
 </menu>
