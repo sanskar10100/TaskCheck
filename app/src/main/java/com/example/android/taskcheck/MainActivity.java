@@ -58,12 +58,16 @@ public class MainActivity extends AppCompatActivity {
 		// Displays a snackbar with information on how to mark a task as completed (long click)
 		// Displayed only at the first run
 		if (displayIntro) {
-			Snackbar.make(findViewById(R.id.parent_view), "Long click on a task to mark as completed!", Snackbar.LENGTH_LONG)
-					.setAction("CLOSE", view -> {
-					})
-					.setActionTextColor(getResources().getColor(android.R.color.holo_red_light))
-					.show();
+			displayIntroSnackbar();
 		}
+	}
+
+	private void displayIntroSnackbar() {
+		Snackbar.make(findViewById(R.id.parent_view), "Long click on a task to mark as completed!", Snackbar.LENGTH_LONG)
+				.setAction("CLOSE", view -> {
+				})
+				.setActionTextColor(getResources().getColor(android.R.color.holo_red_light))
+				.show();
 	}
 
 	/**
@@ -111,12 +115,18 @@ public class MainActivity extends AppCompatActivity {
 
 	@Override
 	public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-		if (item.getItemId() == R.id.menu_action_clear_all) {
-			tasks.clear();
-			adapter.notifyDataSetChanged();
-			Toast.makeText(this, "Task list cleared!", Toast.LENGTH_SHORT).show();
-			return true;
+		switch (item.getItemId()) {
+			case R.id.menu_action_clear_all: {
+				tasks.clear();
+				adapter.notifyDataSetChanged();
+				Toast.makeText(this, "Task list cleared!", Toast.LENGTH_SHORT).show();
+				return true;
+			}
+			case R.id.redisplay_intro: {
+				displayIntroSnackbar();
+				return true;
+			}
+			default: return super.onOptionsItemSelected(item);
 		}
-		return super.onOptionsItemSelected(item);
 	}
 }

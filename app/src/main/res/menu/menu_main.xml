@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/redisplay_intro"
+        android:title="How do I mark task as complete again?"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_baseline_mark_chat_unread_24" />
+
+    <item
         android:id="@+id/menu_action_clear_all"
         android:title="@string/clear_all"
         app:showAsAction="always"
