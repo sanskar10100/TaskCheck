@@ -30,9 +30,10 @@ public class MainActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_main);
 
 		SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
-		int size = sharedPreferences.getInt("0", 0);
+		int size = sharedPreferences.getInt("size_of_list", 0);
+		boolean displayIntro = sharedPreferences.getBoolean("display_intro", true);
 		tasks = new ArrayList<>(size);
-		for (int i = 1; i <= size; i++) {
+		for (int i = 0; i < size; i++) {
 			tasks.add(sharedPreferences.getString(String.valueOf(i), ""));
 		}
 		sharedPreferences.edit().clear().apply();
@@ -49,26 +50,28 @@ public class MainActivity extends AppCompatActivity {
 		recyclerView.setLayoutManager(new LinearLayoutManager(this));
 		recyclerView.setAdapter(adapter);
 
-		Snackbar.make(findViewById(R.id.parent_view), "Long click on a task to mark as completed!", Snackbar.LENGTH_SHORT)
-				.setAction("CLOSE", view -> {
-				})
-				.setActionTextColor(getResources().getColor(android.R.color.holo_red_light))
-				.show();
+		if (displayIntro) {
+			Snackbar.make(findViewById(R.id.parent_view), "Long click on a task to mark as completed!", Snackbar.LENGTH_LONG)
+					.setAction("CLOSE", view -> {
+					})
+					.setActionTextColor(getResources().getColor(android.R.color.holo_red_light))
+					.show();
+		}
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
-
+		SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
+		SharedPreferences.Editor editor = sharedPreferences.edit();
 		if (tasks.size() > 0) {
-			SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
-			SharedPreferences.Editor editor = sharedPreferences.edit();
-			editor.putInt(String.valueOf(0), tasks.size());
-			for (int i = 1; i <= tasks.size(); i++) {
-				editor.putString(String.valueOf(i), tasks.get(i - 1));
+			editor.putInt("size_of_list", tasks.size());
+			for (int i = 0; i < tasks.size(); i++) {
+				editor.putString(String.valueOf(i), tasks.get(i));
 			}
-			editor.apply();
 		}
+		editor.putBoolean("display_intro", false);
+		editor.apply();
 	}
 
 	/**
@@ -77,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 	public void addTask(View view) {
 		EditText editTextTaskDescription = findViewById(R.id.edit_text_task_description);
 		String taskDescription = editTextTaskDescription.getText().toString();
-		if (taskDescription != null && taskDescription.length() != 0) {
+		if (taskDescription.length() != 0) {
 			tasks.add(taskDescription);
 			editTextTaskDescription.setText("");
 			adapter.notifyDataSetChanged();
