@@ -4,8 +4,8 @@
 
     <item
         android:id="@+id/redisplay_intro"
-        android:title="How do I mark task as complete again?"
-        app:showAsAction="always"
+        android:title="@string/how_do_i_mark_task_as_complete_again"
+        app:showAsAction="ifRoom"
         android:icon="@drawable/ic_baseline_mark_chat_unread_24" />
 
     <item

@@ -5,4 +5,5 @@
     <string name="task_description">Task Description</string>
     <string name="add_task">Add Task</string>
     <string name="clear_all">Clear All</string>
+    <string name="how_do_i_mark_task_as_complete_again">How do I mark a task as complete again?</string>
 </resources>
