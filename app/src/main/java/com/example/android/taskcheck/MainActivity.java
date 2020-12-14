@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -46,6 +48,12 @@ public class MainActivity extends AppCompatActivity {
 		RecyclerView recyclerView = findViewById(R.id.recycler_view_tasks);
 		recyclerView.setLayoutManager(new LinearLayoutManager(this));
 		recyclerView.setAdapter(adapter);
+
+		Snackbar.make(findViewById(R.id.parent_view), "Long click on a task to mark as completed!", Snackbar.LENGTH_SHORT)
+				.setAction("CLOSE", view -> {
+				})
+				.setActionTextColor(getResources().getColor(android.R.color.holo_red_light))
+				.show();
 	}
 
 	@Override
