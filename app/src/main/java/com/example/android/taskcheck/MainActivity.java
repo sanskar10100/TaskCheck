@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		// Fetch data stored in SharedPreference file
 		SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
 		int size = sharedPreferences.getInt("size_of_list", 0);
 		boolean displayIntro = sharedPreferences.getBoolean("display_intro", true);
@@ -50,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
 		recyclerView.setLayoutManager(new LinearLayoutManager(this));
 		recyclerView.setAdapter(adapter);
 
+		// Displays a snackbar with information on how to mark a task as completed (long click)
+		// Displayed only at the first run
 		if (displayIntro) {
 			Snackbar.make(findViewById(R.id.parent_view), "Long click on a task to mark as completed!", Snackbar.LENGTH_LONG)
 					.setAction("CLOSE", view -> {
@@ -59,17 +63,24 @@ public class MainActivity extends AppCompatActivity {
 		}
 	}
 
+	/**
+	 * Used for saving the data in the app to SharedPreferences before the app closes.
+	 */
 	@Override
 	protected void onPause() {
 		super.onPause();
+
 		SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
 		SharedPreferences.Editor editor = sharedPreferences.edit();
+
+		// Save tasks data
 		if (tasks.size() > 0) {
 			editor.putInt("size_of_list", tasks.size());
 			for (int i = 0; i < tasks.size(); i++) {
 				editor.putString(String.valueOf(i), tasks.get(i));
 			}
 		}
+		// Set first time launch state as false
 		editor.putBoolean("display_intro", false);
 		editor.apply();
 	}
@@ -84,6 +95,8 @@ public class MainActivity extends AppCompatActivity {
 			tasks.add(taskDescription);
 			editTextTaskDescription.setText("");
 			adapter.notifyDataSetChanged();
+		} else {
+			Toast.makeText(this, "Cannot add empty Task!", Toast.LENGTH_SHORT).show();
 		}
 	}
 }

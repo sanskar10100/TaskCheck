@@ -36,6 +36,7 @@ public class TasksListAdapater extends RecyclerView.Adapter<TasksListAdapater.Vi
 	@Override
 	public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 		holder.getTextView().setText(MainActivity.tasks.get(position));
+
 		// Long click deletes the task from the list and displays a toast
 		holder.itemView.setOnLongClickListener(view -> {
 			MainActivity.tasks.remove(position);
