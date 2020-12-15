@@ -1,13 +1,7 @@
 package com.example.android.taskcheck;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,10 +10,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
+
 import com.google.android.material.snackbar.Snackbar;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -28,37 +27,43 @@ public class MainActivity extends AppCompatActivity {
 
 	static List<TaskData> tasks;
 	TasksListAdapater adapter;
+	TaskDatabase database;
 
+	@SuppressLint("WrongThread")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		// Fetch data stored in SharedPreference file
-		SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
-		int size = sharedPreferences.getInt("size_of_list", 0);
-		boolean displayIntro = sharedPreferences.getBoolean("display_intro", true);
-		tasks = new ArrayList<>(size);
-		for (int i = 0; i < size; i++) {
-			tasks.add(new TaskData(sharedPreferences.getString(String.valueOf(i), "")));
-		}
-		sharedPreferences.edit().clear().apply();
+		// Initialise database access variable. Main Thread Queries allowed as app isn't expected to
+		// perform very heavy tasks
+		database = Room.databaseBuilder(getApplicationContext(), TaskDatabase.class, "task_data")
+				.allowMainThreadQueries()
+				.build();
+
+		// Fetched data from SharedPref. Indicates whether app has been launched at least one time or not
+		boolean firstAppLaunch = getPreferences(Context.MODE_PRIVATE).getBoolean("display_intro", true);
+
+		// Fetching stored task list from the database
+		tasks = database.taskDao().getAll();
+
+		// Deleting existing task list. New one will be saved upon app closure.
+		database.clearAllTables();
 
 		// Fetch and set current date
 		TextView date = findViewById(R.id.text_view_date);
 		String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
 		date.setText(currentDate);
 
+		// Initialize and bind recyclerView
 		adapter = new TasksListAdapater();
-
-		// Generate and bind recyclerView
 		RecyclerView recyclerView = findViewById(R.id.recycler_view_tasks);
 		recyclerView.setLayoutManager(new LinearLayoutManager(this));
 		recyclerView.setAdapter(adapter);
 
 		// Displays a snackbar with information on how to mark a task as completed (long click)
-		// Displayed only at the first run
-		if (displayIntro) {
+		// Displayed only at the first launch
+		if (firstAppLaunch) {
 			displayIntroSnackbar();
 		}
 	}
@@ -79,19 +84,13 @@ public class MainActivity extends AppCompatActivity {
 	protected void onPause() {
 		super.onPause();
 
-		SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
-		SharedPreferences.Editor editor = sharedPreferences.edit();
+		// Indicates that the app has been launched for the first time, so no SnackBar from the next time
+		getPreferences(Context.MODE_PRIVATE).edit().putBoolean("display_intro", false).apply();
 
-		// Save tasks data
+		// Save tasks data to the database
 		if (tasks.size() > 0) {
-			editor.putInt("size_of_list", tasks.size());
-			for (int i = 0; i < tasks.size(); i++) {
-				editor.putString(String.valueOf(i), tasks.get(i).getTaskDescription());
-			}
+			database.taskDao().insertAll(tasks);
 		}
-		// Set first time launch state as false
-		editor.putBoolean("display_intro", false);
-		editor.apply();
 	}
 
 	/**
@@ -100,8 +99,10 @@ public class MainActivity extends AppCompatActivity {
 	public void addTask(View view) {
 		EditText editTextTaskDescription = findViewById(R.id.edit_text_task_description);
 		String taskDescription = editTextTaskDescription.getText().toString();
+
+		// If non-empty string is received, add it to the task list and notify adapter
 		if (taskDescription.length() != 0) {
-			tasks.add(new TaskData(taskDescription));
+			tasks.add(new TaskData(0, taskDescription));
 			editTextTaskDescription.setText("");
 			adapter.notifyDataSetChanged();
 		} else {
@@ -109,12 +110,24 @@ public class MainActivity extends AppCompatActivity {
 		}
 	}
 
+	/**
+	 * Inflate the AppBar menu
+	 *
+	 * @param menu menu object
+	 * @return boolean value indicating success
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.menu_main, menu);
 		return true;
 	}
 
+	/**
+	 * Handles menu click events
+	 *
+	 * @param item the clicked menu entry
+	 * @return status indicating sucess
+	 */
 	@SuppressLint("NonConstantResourceId")
 	@Override
 	public boolean onOptionsItemSelected(@NonNull MenuItem item) {
