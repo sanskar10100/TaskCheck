@@ -68,11 +68,8 @@ public class MainActivity extends AppCompatActivity {
 	 * the menu button. The snackbar display info on how to mark a task as completed
 	 */
 	private void displayIntroSnackbar() {
-		Snackbar.make(findViewById(R.id.parent_view), "Long click on a task to mark as completed!", Snackbar.LENGTH_LONG)
-				.setAction("CLOSE", view -> {
-				})
-				.setActionTextColor(getResources().getColor(android.R.color.holo_red_light))
-				.show();
+		final Snackbar snackbar = Snackbar.make(findViewById(R.id.parent_view), R.string.howto_mark_complete, Snackbar.LENGTH_LONG);
+		snackbar.setAction("Dismiss", v -> snackbar.dismiss()).show();
 	}
 
 	/**

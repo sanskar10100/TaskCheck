@@ -7,4 +7,5 @@
     <string name="add_task">टास्क जोड़ें</string>
     <string name="clear_all">सभी साफ करें</string>
     <string name="how_do_i_mark_task_as_complete_again">मैं कार्य को पूर्ण के रूप में कैसे चिह्नित करूं?</string>
+    <string name="howto_mark_complete">इसे पूर्ण के रूप में चिह्नित करने के लिए किसी कार्य पर लॉन्ग टैप करें!</string>
 </resources>
