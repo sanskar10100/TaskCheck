@@ -26,7 +26,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-	static List<TaskDataModel> tasks;
+	static List<TaskData> tasks;
 	TasksListAdapater adapter;
 
 	@Override
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 		boolean displayIntro = sharedPreferences.getBoolean("display_intro", true);
 		tasks = new ArrayList<>(size);
 		for (int i = 0; i < size; i++) {
-			tasks.add(new TaskDataModel(sharedPreferences.getString(String.valueOf(i), "")));
+			tasks.add(new TaskData(sharedPreferences.getString(String.valueOf(i), "")));
 		}
 		sharedPreferences.edit().clear().apply();
 
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 		EditText editTextTaskDescription = findViewById(R.id.edit_text_task_description);
 		String taskDescription = editTextTaskDescription.getText().toString();
 		if (taskDescription.length() != 0) {
-			tasks.add(new TaskDataModel(taskDescription));
+			tasks.add(new TaskData(taskDescription));
 			editTextTaskDescription.setText("");
 			adapter.notifyDataSetChanged();
 		} else {
