@@ -29,7 +29,8 @@ public class MainActivity extends AppCompatActivity {
 	static List<TaskData> tasks;
 	TasksListAdapater adapter;
 	TaskDatabase database;
-	static String dueDate = "0/0/0";
+	static String dueDate = "none";
+	static String dueTime = "none";
 
 	@SuppressLint("WrongThread")
 	@Override
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
 		// If non-empty string is received, add it to the task list and notify adapter
 		if (taskDescription.length() != 0) {
-			tasks.add(new TaskData(0, taskDescription, dueDate));
+			tasks.add(new TaskData(0, taskDescription, dueDate, dueTime));
 			editTextTaskDescription.setText("");
 			adapter.notifyDataSetChanged();
 		} else {
@@ -113,7 +114,8 @@ public class MainActivity extends AppCompatActivity {
 		}
 
 		// Reset due date
-		dueDate = "0/0/0";
+		dueDate = "none";
+		dueTime = "none";
 	}
 
 	/**
@@ -156,5 +158,10 @@ public class MainActivity extends AppCompatActivity {
 	public void showDatePickerDialog(View view) {
 		DialogFragment fragment = new DatePickerFragment();
 		fragment.show(getSupportFragmentManager(), "datePicker");
+	}
+
+	public void showTimePickerDialog(View view) {
+		DialogFragment fragment = new TimePickerFragment();
+		fragment.show(getSupportFragmentManager(), "timePicker");
 	}
 }

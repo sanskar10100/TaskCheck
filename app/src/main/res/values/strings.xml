@@ -9,4 +9,5 @@
     <string name="howto_mark_complete">Long Tap on a task to mark it as complete!</string>
     <string name="no_due_date">No due date!</string>
     <string name="add_due_date">Add Due Date</string>
+    <string name="no_due_time">No due time!</string>
 </resources>

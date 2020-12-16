@@ -24,10 +24,16 @@ public class TasksListAdapater extends RecyclerView.Adapter<TasksListAdapater.Vi
 	public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 		holder.getTextView().setText(MainActivity.tasks.get(position).taskDescription);
 
-		if (MainActivity.tasks.get(position).dueDate.equals("0/0/0")) {
+		if (MainActivity.tasks.get(position).dueDate.equals("none")) {
 			holder.getTaskDueDateTextView().setText(R.string.no_due_date);
 		} else {
 			holder.getTaskDueDateTextView().setText(MainActivity.tasks.get(position).dueDate);
+		}
+
+		if (MainActivity.tasks.get(position).dueTime.equals("none")) {
+			holder.getTaskDueTimeTextView().setText(R.string.no_due_time);
+		} else {
+			holder.getTaskDueTimeTextView().setText(MainActivity.tasks.get(position).dueTime);
 		}
 
 		// Long click deletes the task from the list and displays a toast
@@ -48,11 +54,13 @@ public class TasksListAdapater extends RecyclerView.Adapter<TasksListAdapater.Vi
 
 		private final TextView taskDescriptionTextView;
 		private final TextView taskDueDateTextView;
+		private final TextView taskDueTimeTextView;
 
 		public ViewHolder(@NonNull View itemView) {
 			super(itemView);
 
 			taskDescriptionTextView = itemView.findViewById(R.id.text_view_single_task_description);
+			taskDueTimeTextView = itemView.findViewById(R.id.task_due_time);
 			taskDueDateTextView = itemView.findViewById(R.id.task_due_date);
 		}
 
@@ -62,6 +70,10 @@ public class TasksListAdapater extends RecyclerView.Adapter<TasksListAdapater.Vi
 
 		public TextView getTaskDueDateTextView() {
 			return taskDueDateTextView;
+		}
+
+		public TextView getTaskDueTimeTextView() {
+			return taskDueTimeTextView;
 		}
 	}
 }
