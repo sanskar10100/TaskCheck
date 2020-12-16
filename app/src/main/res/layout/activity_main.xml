@@ -41,60 +41,60 @@
         android:layout_marginBottom="16dp"
         android:background="#0064FFDA"
         android:scrollbars="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/button_add_task"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_view_your_tasks">
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
+    <EditText
+        android:id="@+id/edit_text_task_description"
+        style="@style/Widget.AppCompat.EditText"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:weightSum="3"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:autofillHints="@string/task_description"
+        android:ems="10"
+        android:hint="@string/task_description"
+        android:inputType="textShortMessage"
+        android:singleLine="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button_add_task"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:adjustViewBounds="false"
+        android:backgroundTint="#FFD600"
+        android:contentDescription="@string/add_due_date"
+        android:cropToPadding="false"
+        android:onClick="showDatePickerDialog"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/edit_text_task_description"
+        app:srcCompat="@drawable/ic_baseline_date_range_28" />
+
+    <Button
+        android:id="@+id/button_add_task"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="addTask"
+        android:text="@string/add_task"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#1E88E5"
+        app:iconTint="#039BE5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <EditText
-            android:id="@+id/edit_text_task_description"
-            style="@style/Widget.AppCompat.EditText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:autofillHints="@string/task_description"
-            android:ems="10"
-            android:hint="@string/task_description"
-            android:inputType="textShortMessage"
-            android:singleLine="true"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@android:color/holo_blue_dark"
-            android:contentDescription="@string/add_due_date"
-            android:onClick="showDatePickerDialog"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/ic_baseline_date_range_24" />
-
-        <Button
-            android:id="@+id/button_add_task"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="addTask"
-            android:text="@string/add_task"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="#1E88E5"
-            app:iconTint="#039BE5"
-            app:rippleColor="#1E88E5"
-            app:strokeColor="#1E88E5" />
-    </LinearLayout>
+        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:rippleColor="#1E88E5"
+        app:strokeColor="#1E88E5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
