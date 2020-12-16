@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 	static List<TaskData> tasks;
 	TasksListAdapater adapter;
 	TaskDatabase database;
+	static String dueDate = "0/0/0";
 
 	@SuppressLint("WrongThread")
 	@Override
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 		// perform very heavy tasks
 		database = Room.databaseBuilder(getApplicationContext(), TaskDatabase.class, "task_data")
 				.allowMainThreadQueries()
+				.fallbackToDestructiveMigration()
 				.build();
 
 		// Fetched data from SharedPref. Indicates whether app has been launched at least one time or not
@@ -102,12 +105,15 @@ public class MainActivity extends AppCompatActivity {
 
 		// If non-empty string is received, add it to the task list and notify adapter
 		if (taskDescription.length() != 0) {
-			tasks.add(new TaskData(0, taskDescription));
+			tasks.add(new TaskData(0, taskDescription, dueDate));
 			editTextTaskDescription.setText("");
 			adapter.notifyDataSetChanged();
 		} else {
 			Toast.makeText(this, "Cannot add empty Task!", Toast.LENGTH_SHORT).show();
 		}
+
+		// Reset due date
+		dueDate = "0/0/0";
 	}
 
 	/**
@@ -145,5 +151,10 @@ public class MainActivity extends AppCompatActivity {
 			default:
 				return super.onOptionsItemSelected(item);
 		}
+	}
+
+	public void showDatePickerDialog(View view) {
+		DialogFragment fragment = new DatePickerFragment();
+		fragment.show(getSupportFragmentManager(), "datePicker");
 	}
 }

@@ -7,4 +7,6 @@
     <string name="clear_all">Clear All</string>
     <string name="how_do_i_mark_task_as_complete_again">How do I mark a task as complete again?</string>
     <string name="howto_mark_complete">Long Tap on a task to mark it as complete!</string>
+    <string name="no_due_date">No due date!</string>
+    <string name="add_due_date">Add Due Date</string>
 </resources>

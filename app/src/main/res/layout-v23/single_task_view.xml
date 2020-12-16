@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?attr/selectableItemBackground"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:targetApi="m">
 
     <TextView
         android:id="@+id/text_view_single_task_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textAlignment="inherit"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#1E88E5"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/task_due_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#CA1414" />
 
     <View
         android:layout_width="match_parent"

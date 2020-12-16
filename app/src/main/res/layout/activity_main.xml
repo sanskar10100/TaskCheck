@@ -51,7 +51,7 @@
         style="@style/Widget.AppCompat.EditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:autofillHints="@string/task_description"
         android:ems="10"
         android:hint="@string/task_description"
@@ -66,8 +66,8 @@
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
         android:onClick="addTask"
         android:text="@string/add_task"
@@ -76,7 +76,22 @@
         app:iconTint="#039BE5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/edit_text_task_description"
+        app:layout_constraintStart_toEndOf="@+id/imageButton"
         app:rippleColor="#1E88E5"
         app:strokeColor="#1E88E5" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        android:contentDescription="@string/add_due_date"
+        android:onClick="showDatePickerDialog"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/edit_text_task_description"
+        app:srcCompat="@drawable/ic_baseline_date_range_24" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
