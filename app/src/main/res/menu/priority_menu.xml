@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_priority_urgent"
+        android:title="@string/urgent" />
+
+    <item
+        android:id="@+id/action_priority_rushed"
+        android:title="@string/rushed" />
+
+    <item
+        android:id="@+id/action_priority_regular"
+        android:title="@string/regular" />
+
+</menu>

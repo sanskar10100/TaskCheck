@@ -36,6 +36,12 @@ public class TasksListAdapater extends RecyclerView.Adapter<TasksListAdapater.Vi
 			holder.getTaskDueTimeTextView().setText(MainActivity.tasks.get(position).dueTime);
 		}
 
+		if (MainActivity.tasks.get(position).taskPriority.equals("none")) {
+			holder.getTaskPriority().setText(R.string.no_task_priority_assigned);
+		} else {
+			holder.getTaskPriority().setText(MainActivity.tasks.get(position).taskPriority);
+		}
+
 		// Long click deletes the task from the list and displays a toast
 		holder.itemView.setOnLongClickListener(view -> {
 			MainActivity.tasks.remove(position);
@@ -55,6 +61,7 @@ public class TasksListAdapater extends RecyclerView.Adapter<TasksListAdapater.Vi
 		private final TextView taskDescriptionTextView;
 		private final TextView taskDueDateTextView;
 		private final TextView taskDueTimeTextView;
+		private final TextView taskPriority;
 
 		public ViewHolder(@NonNull View itemView) {
 			super(itemView);
@@ -62,6 +69,7 @@ public class TasksListAdapater extends RecyclerView.Adapter<TasksListAdapater.Vi
 			taskDescriptionTextView = itemView.findViewById(R.id.text_view_single_task_description);
 			taskDueTimeTextView = itemView.findViewById(R.id.task_due_time);
 			taskDueDateTextView = itemView.findViewById(R.id.task_due_date);
+			taskPriority = itemView.findViewById(R.id.task_priority);
 		}
 
 		public TextView getTextView() {
@@ -74,6 +82,10 @@ public class TasksListAdapater extends RecyclerView.Adapter<TasksListAdapater.Vi
 
 		public TextView getTaskDueTimeTextView() {
 			return taskDueTimeTextView;
+		}
+
+		public TextView getTaskPriority() {
+			return taskPriority;
 		}
 	}
 }

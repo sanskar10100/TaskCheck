@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,13 +25,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
 	static List<TaskData> tasks;
-	TasksListAdapater adapter;
-	TaskDatabase database;
 	static String dueDate = "none";
 	static String dueTime = "none";
+	static String taskPriority = "none";
+	TasksListAdapater adapter;
+	TaskDatabase database;
 
 	@SuppressLint("WrongThread")
 	@Override
@@ -106,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
 
 		// If non-empty string is received, add it to the task list and notify adapter
 		if (taskDescription.length() != 0) {
-			tasks.add(new TaskData(0, taskDescription, dueDate, dueTime));
+			tasks.add(new TaskData(0, taskDescription, dueDate, dueTime, taskPriority));
 			editTextTaskDescription.setText("");
 			adapter.notifyDataSetChanged();
 		} else {
@@ -116,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
 		// Reset due date
 		dueDate = "none";
 		dueTime = "none";
+		taskPriority = "none";
 	}
 
 	/**
@@ -163,5 +166,30 @@ public class MainActivity extends AppCompatActivity {
 	public void showTimePickerDialog(View view) {
 		DialogFragment fragment = new TimePickerFragment();
 		fragment.show(getSupportFragmentManager(), "timePicker");
+	}
+
+	public void showPriorityMenu(View view) {
+		PopupMenu popup = new PopupMenu(this, view);
+		popup.setOnMenuItemClickListener(this);
+		getMenuInflater().inflate(R.menu.priority_menu, popup.getMenu());
+		popup.show();
+	}
+
+	@SuppressLint("NonConstantResourceId")
+	@Override
+	public boolean onMenuItemClick(MenuItem menuItem) {
+		switch (menuItem.getItemId()) {
+			case R.id.action_priority_urgent:
+				taskPriority = "Urgent";
+				return true;
+			case R.id.action_priority_rushed:
+				taskPriority = "Rushed";
+				return true;
+			case R.id.action_priority_regular:
+				taskPriority = "Regular";
+				return true;
+			default:
+				return false;
+		}
 	}
 }

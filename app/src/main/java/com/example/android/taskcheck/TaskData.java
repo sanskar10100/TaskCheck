@@ -19,10 +19,14 @@ public class TaskData {
 	@ColumnInfo(name = "task_due_time")
 	public String dueTime;
 
-	public TaskData(int id, String taskDescription, String dueDate, String dueTime) {
+	@ColumnInfo(name = "task_priority")
+	public String taskPriority;
+
+	public TaskData(int id, String taskDescription, String dueDate, String dueTime, String taskPriority) {
 		this.id = id;
 		this.taskDescription = taskDescription;
 		this.dueDate = dueDate;
 		this.dueTime = dueTime;
+		this.taskPriority = taskPriority;
 	}
 }

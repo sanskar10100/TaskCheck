@@ -10,4 +10,8 @@
     <string name="no_due_date">No due date!</string>
     <string name="add_due_date">Add Due Date</string>
     <string name="no_due_time">No due time!</string>
+    <string name="urgent">Urgent</string>
+    <string name="rushed">Rushed</string>
+    <string name="regular">Regular</string>
+    <string name="no_task_priority_assigned">No priority!</string>
 </resources>
