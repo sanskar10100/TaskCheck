@@ -115,7 +115,7 @@
 
     <Button
         android:id="@+id/button_add_task"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
