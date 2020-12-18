@@ -110,15 +110,15 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 		if (taskDescription.length() != 0) {
 			tasks.add(new TaskData(0, taskDescription, dueDate, dueTime, taskPriority));
 			editTextTaskDescription.setText("");
+			dueDate = "none";
+			dueTime = "none";
+			taskPriority = "none";
 			adapter.notifyDataSetChanged();
 		} else {
 			Toast.makeText(this, "Cannot add empty Task!", Toast.LENGTH_SHORT).show();
 		}
 
-		// Reset due date
-		dueDate = "none";
-		dueTime = "none";
-		taskPriority = "none";
+
 	}
 
 	/**
