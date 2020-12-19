@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
 
@@ -26,6 +27,10 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
 
 	@Override
 	public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-		MainActivity.dueDate = i2 + "/" + (i1 + 1) + "/" + i;
+		MainActivity.dueDate =
+				String.format(Locale.getDefault(), "%02d", i2) +
+				"/" + String.format(Locale.getDefault(), "%02d", (i1 + 1)) +
+				"/" + i;
+
 	}
 }

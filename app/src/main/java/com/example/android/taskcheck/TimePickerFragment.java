@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
 
@@ -24,13 +25,12 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
 		return new TimePickerDialog(getActivity(), this, hour, minute, false);
 	}
 
-	@SuppressLint("DefaultLocale")
 	@Override
 	public void onTimeSet(TimePicker timePicker, int i, int i1) {
 		if (i < 12) {
-			MainActivity.dueTime = ((i == 0) ? 12 : i) + ":" + String.format("%02d", i1) + " AM";
+			MainActivity.dueTime = ((i == 0) ? 12 : i) + ":" + String.format(Locale.getDefault(), "%02d", i1) + " AM";
 		} else {
-			MainActivity.dueTime = ((i == 12) ? 12 : i - 12) + ":" + String.format("%02d", i1) + " PM";
+			MainActivity.dueTime = ((i == 12) ? 12 : i - 12) + ":" + String.format(Locale.getDefault(), "%02d", i1) + " PM";
 		}
 	}
 }
