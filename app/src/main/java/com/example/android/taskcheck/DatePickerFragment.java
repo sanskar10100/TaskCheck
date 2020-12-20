@@ -25,12 +25,20 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
 		return new DatePickerDialog(getActivity(), this, year, month, day);
 	}
 
+
+	/**
+	 * Sets due date for a task in this format: "YYYY/MM/DD"
+	 *
+	 * @param i year
+	 * @param i1 month
+	 * @param i2 day
+	 */
 	@Override
 	public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
 		MainActivity.dueDate =
-				String.format(Locale.getDefault(), "%02d", i2) +
+				i +
 				"/" + String.format(Locale.getDefault(), "%02d", (i1 + 1)) +
-				"/" + i;
+				"/" + String.format(Locale.getDefault(), "%02d", i2);
 
 	}
 }

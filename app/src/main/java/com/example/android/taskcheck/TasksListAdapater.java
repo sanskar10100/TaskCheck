@@ -30,7 +30,8 @@ public class TasksListAdapater extends RecyclerView.Adapter<TasksListAdapater.Vi
 		if (MainActivity.tasks.get(position).dueDate.equals("none")) {
 			holder.getTaskDueDateTextView().setText(R.string.no_due_date);
 		} else {
-			holder.getTaskDueDateTextView().setText(MainActivity.tasks.get(position).dueDate);
+			// Date is formatted to DD/MM/YYYY before being set
+			holder.getTaskDueDateTextView().setText(Helper.reverseDateString(MainActivity.tasks.get(position).dueDate));
 		}
 
 		if (MainActivity.tasks.get(position).dueTime.equals("none")) {

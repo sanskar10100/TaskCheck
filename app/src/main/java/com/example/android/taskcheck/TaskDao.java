@@ -12,6 +12,9 @@ public interface TaskDao {
 	@Query("SELECT * FROM task_data")
 	List<TaskData> getAll();
 
+	@Query("SELECT * FROM task_data ORDER BY task_due_date")
+	List<TaskData> getAllSortedByDueDate();
+
 	@Insert
 	void insertAll(List<TaskData> taskData);
 }
