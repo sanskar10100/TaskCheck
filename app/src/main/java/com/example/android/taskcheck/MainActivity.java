@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.PopupMenu;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,10 +19,7 @@ import androidx.room.Room;
 
 import com.google.android.material.snackbar.Snackbar;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
@@ -170,6 +166,13 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 		popup.show();
 	}
 
+	public void showSortByPopupMenu(View view) {
+		PopupMenu popupMenu = new PopupMenu(this, view);
+		popupMenu.setOnMenuItemClickListener(this);
+		getMenuInflater().inflate(R.menu.sort_menu, popupMenu.getMenu());
+		popupMenu.show();
+	}
+
 	@SuppressLint("NonConstantResourceId")
 	@Override
 	public boolean onMenuItemClick(MenuItem menuItem) {
@@ -183,6 +186,13 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 			case R.id.action_priority_regular:
 				taskPriority = "Regular";
 				return true;
+			case R.id.action_sort_by_date:
+				Helper.sortByDate(tasks);
+				adapter.notifyDataSetChanged();
+				return true;
+			case R.id.action_sort_by_priority:
+				Helper.sortByPriority(tasks);
+				adapter.notifyDataSetChanged();
 			default:
 				return false;
 		}

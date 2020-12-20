@@ -14,4 +14,7 @@
     <string name="rushed">Rushed</string>
     <string name="regular">Regular</string>
     <string name="no_task_priority_assigned">No priority!</string>
+    <string name="sort_by_date">Sort by date</string>
+    <string name="sort_by_priority">Sort by priority</string>
+    <string name="sort_by">Sort By</string>
 </resources>

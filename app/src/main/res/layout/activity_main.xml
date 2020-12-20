@@ -119,5 +119,16 @@
         app:rippleColor="#1E88E5"
         app:strokeColor="#1E88E5" />
 
+    <Button
+        android:id="@+id/button_sort_by"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:onClick="showSortByPopupMenu"
+        android:text="@string/sort_by"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
