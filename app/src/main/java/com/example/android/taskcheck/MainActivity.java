@@ -56,11 +56,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 		// Deleting existing task list. New one will be saved upon app closure.
 		database.clearAllTables();
 
-		// Fetch and set current date
-		TextView date = findViewById(R.id.text_view_date);
-		String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-		date.setText(currentDate);
-
 		// Initialize and bind recyclerView
 		adapter = new TasksListAdapater();
 		RecyclerView recyclerView = findViewById(R.id.recycler_view_tasks);
