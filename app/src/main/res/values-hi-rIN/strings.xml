@@ -15,4 +15,7 @@
     <string name="urgent">अति आवश्यक</string>
     <string name="rushed">जल्दी करना</string>
     <string name="regular">सामान्य</string>
+    <string name="sort_by_date">तिथि के अनुसार छाँटें</string>
+    <string name="sort_by_priority">प्राथमिकता के आधार पर छाँटें</string>
+    <string name="sort_by">क्रमबद्ध करें</string>
 </resources>
