@@ -24,6 +24,9 @@ public class TasksListAdapater extends RecyclerView.Adapter<TasksListAdapater.Vi
 	public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 		holder.getTextView().setText(MainActivity.tasks.get(position).taskDescription);
 
+		// This obviously isn't a very good pattern, but I couldn't think of any other patterns
+		// Using another function would require passing all the data like holder and position to it,
+		// ultimately defeating the purpose.
 		if (MainActivity.tasks.get(position).dueDate.equals("none")) {
 			holder.getTaskDueDateTextView().setText(R.string.no_due_date);
 		} else {
