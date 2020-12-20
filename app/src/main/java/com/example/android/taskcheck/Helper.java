@@ -1,8 +1,6 @@
 package com.example.android.taskcheck;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class Helper {
@@ -20,6 +18,7 @@ public class Helper {
 	/**
 	 * Sorts tasks by due date
 	 * Note: I'm unclear on how this works exactly, but it does.
+	 *
 	 * @param tasks the list to be sorted.
 	 */
 	public static void sortByDate(final List<TaskData> tasks) {
@@ -28,6 +27,7 @@ public class Helper {
 
 	/**
 	 * Sorts tasks by priority or urgency
+	 *
 	 * @param tasks the list to be sorted
 	 */
 	public static void sortByPriority(final List<TaskData> tasks) {

@@ -1,6 +1,5 @@
 package com.example.android.taskcheck;
 
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
