@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
+    android:layout_marginBottom="8dp"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?attr/selectableItemBackground"
@@ -28,29 +28,31 @@
             android:id="@+id/task_due_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#D50000" />
+            android:textColor="#D50000"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/task_due_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:textColor="#D50000" />
+            android:textColor="#D50000"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/task_priority"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:textColor="#D50000" />
+            android:textColor="#D50000"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#221F1F"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"/>
+        android:layout_marginEnd="5dp"
+        android:background="#221F1F" />
 
 </LinearLayout>
