@@ -22,6 +22,12 @@ Android Native app for daily task management with a minimalistic material design
 - Custom AppBar Menu icons for added convenience.
 - Snackbar for displaying HOW-TO on launch.
 
+## Screenshots:
+![Screenshot_1](https://github.com/sanskar10100/resources/blob/main/TaskCheck_1.jpg)
+![Screenshot_2](https://github.com/sanskar10100/resources/blob/main/TaskCheck_2.jpg)
+![Screenshot_3](https://github.com/sanskar10100/resources/blob/main/TaskCheck_3.jpg)
+![Screenshot_4](https://github.com/sanskar10100/resources/blob/main/TaskCheck_4.jpg)
+
 ## APK Available for Download in the Releases section
 Alternatively, click [here to download.](https://github.com/sanskar10100/TaskCheck/releases/download/final/TestCheck.apk)
 
