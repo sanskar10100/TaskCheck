@@ -14,6 +14,9 @@ import java.util.Locale;
 
 public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
 
+	/**
+	 * Sets current time fetched from the system as the default.
+	 */
 	@NonNull
 	@Override
 	public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -24,6 +27,12 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
 		return new TimePickerDialog(getActivity(), this, hour, minute, false);
 	}
 
+	/**
+	 * Sets due time for the data in "H:MM AM/PM" format
+	 *
+	 * @param i hour
+	 * @param i1 minute
+	 */
 	@Override
 	public void onTimeSet(TimePicker timePicker, int i, int i1) {
 		if (i < 12) {

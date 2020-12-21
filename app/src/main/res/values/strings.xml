@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">TaskCheck</string>
     <string name="date">Date</string>
-    <string name="your_tasks">Your Tasks:</string>
+    <string name="your_tasks">Your Tasks</string>
     <string name="task_description">Task Description</string>
     <string name="add_task">Add</string>
     <string name="clear_all">Clear All</string>

@@ -16,8 +16,7 @@ public class Helper {
 	}
 
 	/**
-	 * Sorts tasks by due date
-	 * Note: I'm unclear on how this works exactly, but it does.
+	 * Sorts tasks (list) by due date
 	 *
 	 * @param tasks the list to be sorted.
 	 */
@@ -26,7 +25,7 @@ public class Helper {
 	}
 
 	/**
-	 * Sorts tasks by priority or urgency
+	 * Sorts tasks (list) by priority or urgency
 	 *
 	 * @param tasks the list to be sorted
 	 */

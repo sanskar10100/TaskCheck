@@ -51,25 +51,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="8dp"
-        android:adjustViewBounds="false"
-        android:backgroundTint="#FFD600"
-        android:contentDescription="@string/add_due_date"
-        android:cropToPadding="false"
-        android:onClick="showTimePickerDialog"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_add_task_priority"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
-        app:srcCompat="@drawable/ic_baseline_access_time_28" />
-
-    <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/image_button_due_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -85,7 +67,25 @@
         app:srcCompat="@drawable/ic_baseline_date_range_28" />
 
     <ImageButton
-        android:id="@+id/button_add_task_priority"
+        android:id="@+id/image_button_due_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
+        android:adjustViewBounds="false"
+        android:backgroundTint="#FFD600"
+        android:contentDescription="@string/add_due_date"
+        android:cropToPadding="false"
+        android:onClick="showTimePickerDialog"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/image_button_task_priority"
+        app:layout_constraintStart_toEndOf="@+id/image_button_due_date"
+        app:srcCompat="@drawable/ic_baseline_access_time_28" />
+
+    <ImageButton
+        android:id="@+id/image_button_task_priority"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
@@ -113,7 +113,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#1E88E5"
         app:iconTint="#039BE5"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton2"
+        app:layout_constraintBottom_toTopOf="@+id/image_button_due_time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/edit_text_task_description"
         app:rippleColor="#1E88E5"

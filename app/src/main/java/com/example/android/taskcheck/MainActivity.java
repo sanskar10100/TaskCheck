@@ -23,6 +23,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
+	// Data fields
 	static List<TaskData> tasks;
 	static String dueDate = "none";
 	static String dueTime = "none";
@@ -30,9 +31,14 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 	TasksListAdapater adapter;
 	TaskDatabase database;
 
+	/**
+	 * First method that gets called when the app is launched. All instantiations and inflations here.
+	 */
 	@SuppressLint("WrongThread")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+
+		// Set main content view
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
@@ -100,16 +106,17 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 		// If non-empty string is received, add it to the task list and notify adapter
 		if (taskDescription.length() != 0) {
 			tasks.add(new TaskData(0, taskDescription, dueDate, dueTime, taskPriority));
-			editTextTaskDescription.setText("");
+			editTextTaskDescription.setText("");    // Resets Task Input field
+
+			// Resets the optional task attributes
 			dueDate = "none";
 			dueTime = "none";
 			taskPriority = "none";
 			adapter.notifyDataSetChanged();
 		} else {
+			// Errors out with a toast.
 			Toast.makeText(this, "Cannot add empty Task!", Toast.LENGTH_SHORT).show();
 		}
-
-
 	}
 
 	/**
@@ -125,10 +132,10 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 	}
 
 	/**
-	 * Handles menu click events
+	 * Handles AppBar menu option clicks
 	 *
 	 * @param item the clicked menu entry
-	 * @return status indicating sucess
+	 * @return status indicating success
 	 */
 	@SuppressLint("NonConstantResourceId")
 	@Override
@@ -149,16 +156,25 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 		}
 	}
 
+	/**
+	 * Displays DatePicker for due date selection
+	 */
 	public void showDatePickerDialog(View view) {
 		DialogFragment fragment = new DatePickerFragment();
 		fragment.show(getSupportFragmentManager(), "datePicker");
 	}
 
+	/**
+	 * Displays TimePicker for due time selection
+	 */
 	public void showTimePickerDialog(View view) {
 		DialogFragment fragment = new TimePickerFragment();
 		fragment.show(getSupportFragmentManager(), "timePicker");
 	}
 
+	/**
+	 * Instantiates and displays a new Popup menu to set task priority
+	 */
 	public void showPriorityMenu(View view) {
 		PopupMenu popup = new PopupMenu(this, view);
 		popup.setOnMenuItemClickListener(this);
@@ -166,6 +182,9 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 		popup.show();
 	}
 
+	/**
+	 * Instantiates and displays a Popup menu to sort lists by either due time or priority
+	 */
 	public void showSortByPopupMenu(View view) {
 		PopupMenu popupMenu = new PopupMenu(this, view);
 		popupMenu.setOnMenuItemClickListener(this);
@@ -173,6 +192,12 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 		popupMenu.show();
 	}
 
+	/**
+	 * Handles Popup menu option click events. Applicable for both sorting and task priority
+	 * setter menus
+	 *
+	 * @return status code indicating whether event has been handled or not
+	 */
 	@SuppressLint("NonConstantResourceId")
 	@Override
 	public boolean onMenuItemClick(MenuItem menuItem) {

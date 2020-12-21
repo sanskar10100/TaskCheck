@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class TasksListAdapater extends RecyclerView.Adapter<TasksListAdapater.ViewHolder> {
 
-	// Boilerplate code for Adapter, explanation not necessary
 
+	/**
+	 * Boilerplate for creating views for RecyclerView
+	 */
 	@NonNull
 	@Override
 	public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -20,6 +22,9 @@ public class TasksListAdapater extends RecyclerView.Adapter<TasksListAdapater.Vi
 		return new ViewHolder(view);
 	}
 
+	/**
+	 * Boilerplate for runtime binding in RecyclerView
+	 */
 	@Override
 	public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 		holder.getTextView().setText(MainActivity.tasks.get(position).taskDescription);
