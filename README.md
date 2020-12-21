@@ -22,7 +22,7 @@ Android Native app for daily task management with a minimalistic material design
 - Snackbar for displaying HOW-TO on launch.
 
 ## APK Available for Download in the Releases section
-Alternatively, click here to download.
+Alternatively, click [here to download.](https://github.com/sanskar10100/TaskCheck/releases/download/final/TestCheck.apk)
 
 ---
 
