@@ -56,6 +56,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginBottom="8dp"
         android:adjustViewBounds="false"
+        android:tooltipText="Set due date"
         android:backgroundTint="#FFD600"
         android:contentDescription="@string/add_due_date"
         android:cropToPadding="false"
@@ -63,7 +64,8 @@
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_baseline_date_range_28" />
+        app:srcCompat="@drawable/ic_baseline_date_range_28"
+        tools:targetApi="o" />
 
     <ImageButton
         android:id="@+id/image_button_due_time"
@@ -75,13 +77,15 @@
         android:adjustViewBounds="false"
         android:backgroundTint="#FFD600"
         android:contentDescription="@string/add_due_date"
+        android:tooltipText="Set due time"
         android:cropToPadding="false"
         android:onClick="showTimePickerDialog"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/image_button_task_priority"
         app:layout_constraintStart_toEndOf="@+id/image_button_due_date"
-        app:srcCompat="@drawable/ic_baseline_access_time_28" />
+        app:srcCompat="@drawable/ic_baseline_access_time_28"
+        tools:targetApi="o"/>
 
     <ImageButton
         android:id="@+id/image_button_task_priority"
@@ -94,10 +98,12 @@
         android:contentDescription="@string/add_due_date"
         android:cropToPadding="false"
         android:onClick="showPriorityMenu"
+        android:tooltipText="Add priority"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_baseline_priority_high_24" />
+        app:srcCompat="@drawable/ic_baseline_priority_high_24"
+        tools:targetApi="o" />
 
     <Button
         android:id="@+id/button_add_task"
