@@ -1,15 +1,29 @@
 # TaskCheck
-A minimalistic productivity focused Android App that allows you to create and organize your daily tasks.
+Android Native app for daily task management with a minimalistic material design approach.
 
-The app uses a `RecyclerView` to display the list of tasks to the user. When the user first opens the 
-app, a snackbar intro is displayed about how to mark a task as completed. The rest of the UI
-is extremely intuitive and can be grasped at the first look. SharedPreferences are currently being
-used to persist the task list on storage (database version currently in development). The app also
-supports Hindi language although this can be triggered only by changing the 
-default language of the device.
+## Features:
+- Minimalistic UI. Less interaction, more efficiency.
+- View all tasks in a compact yet comprehensive list.
+- Add multiple additional attributes to each task, like due date, due time and priority level.
+- Sort tasks by due date or priority.
+- Dark Theme support for reduced eye straing and better battery conservation.
+- Long tap on a task to mark it as complete.
+- Option to switch to Hindi by adjusting system settings.
+- Clear all tasks by tapping a single button.
+
+## Key Technical Components:
+- ConstraintLayout for proper positioning.
+- CardView with nested ConstraintLayout in task addition section for emphasis.
+- RecyclerView for displaying the scrollable task list with on-demand binding.
+- Room persistance library at two endpoints, launcha and closure for fetching and saving, respectively.
+- DatePicker and TimePicker fragments for date and time selection.
+- Popup menus for concise option lists.
+- Custom AppBar Menu icons for added convenience.
+- Snackbar for displaying HOW-TO on launch.
+
+## APK Available for Download in the Releases section
+Alternatively, click here to download.
 
 ---
 
-## Multiple Features being developed actively. Make sure to check for updates in the release section.
-
-Huge shoutout to [Pranjal](https://github.com/Pranjal-codes) who inspired me to make this app.
+Huge shoutout to [Pranjal](github.com/pranjal-codes) for providing me with inspiration for building this little app.
