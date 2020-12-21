@@ -10,6 +10,7 @@ Android Native app for daily task management with a minimalistic material design
 - Long tap on a task to mark it as complete.
 - Option to switch to Hindi by adjusting system settings.
 - Clear all tasks by tapping a single button.
+- Extremely small size (~3 MB) and low resource consumption.
 
 ## Key Technical Components:
 - ConstraintLayout for proper positioning.
