@@ -18,111 +18,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_tasks"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="#0064FFDA"
-        android:scrollbars="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/divider"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_your_tasks">
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-    <EditText
-        android:id="@+id/edit_text_task_description"
-        style="@style/Widget.AppCompat.EditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:autofillHints="@string/task_description"
-        android:ems="10"
-        android:hint="@string/task_description"
-        android:inputType="textShortMessage"
-        android:singleLine="true"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button_add_task"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageButton
-        android:id="@+id/image_button_due_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="8dp"
-        android:adjustViewBounds="false"
-        android:tooltipText="Set due date"
-        android:backgroundTint="#FFD600"
-        android:contentDescription="@string/add_due_date"
-        android:cropToPadding="false"
-        android:onClick="showDatePickerDialog"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_baseline_date_range_28"
-        tools:targetApi="o" />
-
-    <ImageButton
-        android:id="@+id/image_button_due_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="8dp"
-        android:adjustViewBounds="false"
-        android:backgroundTint="#FFD600"
-        android:contentDescription="@string/add_due_date"
-        android:tooltipText="Set due time"
-        android:cropToPadding="false"
-        android:onClick="showTimePickerDialog"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/image_button_task_priority"
-        app:layout_constraintStart_toEndOf="@+id/image_button_due_date"
-        app:srcCompat="@drawable/ic_baseline_access_time_28"
-        tools:targetApi="o"/>
-
-    <ImageButton
-        android:id="@+id/image_button_task_priority"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="8dp"
-        android:adjustViewBounds="false"
-        android:backgroundTint="#FFD600"
-        android:contentDescription="@string/add_due_date"
-        android:cropToPadding="false"
-        android:onClick="showPriorityMenu"
-        android:tooltipText="Add priority"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_baseline_priority_high_24"
-        tools:targetApi="o" />
-
-    <Button
-        android:id="@+id/button_add_task"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="16dp"
-        android:onClick="addTask"
-        android:text="@string/add_task"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="#1E88E5"
-        app:iconTint="#039BE5"
-        app:layout_constraintBottom_toTopOf="@+id/image_button_task_priority"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/edit_text_task_description"
-        app:rippleColor="#1E88E5"
-        app:strokeColor="#1E88E5" />
-
     <Button
         android:id="@+id/button_sort_by"
         android:layout_width="wrap_content"
@@ -134,18 +29,130 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_tasks"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toTopOf="@+id/button_add_task"
+        android:background="#0064FFDA"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_your_tasks">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:cardBackgroundColor="#7986CB"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/edit_text_task_description"
+                style="@style/Widget.AppCompat.EditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:autofillHints="@string/task_description"
+                android:ems="10"
+                android:hint="@string/task_description"
+                android:inputType="textShortMessage"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#DEEDED"
+                app:layout_constraintBaseline_toBaselineOf="@+id/button_add_task"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageButton
+                android:id="@+id/image_button_due_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginBottom="8dp"
+                android:adjustViewBounds="false"
+                android:backgroundTint="#FFD600"
+                android:contentDescription="@string/add_due_date"
+                android:cropToPadding="false"
+                android:onClick="showDatePickerDialog"
+                android:scaleType="centerCrop"
+                android:tooltipText="Set due date"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/ic_baseline_date_range_28"
+                tools:targetApi="o" />
+
+            <ImageButton
+                android:id="@+id/image_button_due_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="8dp"
+                android:adjustViewBounds="false"
+                android:backgroundTint="#FFD600"
+                android:contentDescription="@string/add_due_date"
+                android:cropToPadding="false"
+                android:onClick="showTimePickerDialog"
+                android:scaleType="centerCrop"
+                android:tooltipText="Set due time"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/image_button_task_priority"
+                app:layout_constraintStart_toEndOf="@+id/image_button_due_date"
+                app:srcCompat="@drawable/ic_baseline_access_time_28"
+                tools:targetApi="o" />
+
+            <ImageButton
+                android:id="@+id/image_button_task_priority"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="#FFD600"
+                android:contentDescription="@string/add_due_date"
+                android:cropToPadding="false"
+                android:onClick="showPriorityMenu"
+                android:scaleType="centerCrop"
+                android:tooltipText="Add priority"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_baseline_priority_high_24"
+                tools:targetApi="o" />
+
+            <Button
+                android:id="@+id/button_add_task"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:onClick="addTask"
+                android:text="@string/add_task"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#1E88E5"
+                app:iconTint="#039BE5"
+                app:layout_constraintBottom_toTopOf="@+id/image_button_due_date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/edit_text_task_description"
+                app:rippleColor="#1E88E5"
+                app:strokeColor="#1E88E5" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
