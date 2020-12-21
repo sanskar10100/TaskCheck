@@ -26,4 +26,4 @@ Alternatively, click here to download.
 
 ---
 
-Huge shoutout to [Pranjal](github.com/pranjal-codes) for providing me with inspiration for building this little app.
+Huge shoutout to [Pranjal](https://github.com/pranjal-codes) for providing me with inspiration for building this little app.
