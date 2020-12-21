@@ -25,10 +25,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
         android:background="#0064FFDA"
         android:scrollbars="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/edit_text_task_description"
+        app:layout_constraintBottom_toTopOf="@+id/divider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_view_your_tasks">
@@ -107,13 +106,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
         android:onClick="addTask"
         android:text="@string/add_task"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#1E88E5"
         app:iconTint="#039BE5"
-        app:layout_constraintBottom_toTopOf="@+id/image_button_due_time"
+        app:layout_constraintBottom_toTopOf="@+id/image_button_task_priority"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/edit_text_task_description"
         app:rippleColor="#1E88E5"
@@ -129,6 +127,19 @@
         android:text="@string/sort_by"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toTopOf="@+id/button_add_task"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
