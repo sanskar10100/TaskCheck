@@ -15,7 +15,7 @@ Android Native app for daily task management with a minimalistic material design
 - ConstraintLayout for proper positioning.
 - CardView with nested ConstraintLayout in task addition section for emphasis.
 - RecyclerView for displaying the scrollable task list with on-demand binding.
-- Room persistance library at two endpoints, launcha and closure for fetching and saving, respectively.
+- Room persistance library at two endpoints, launch and closure for fetching and saving, respectively.
 - DatePicker and TimePicker fragments for date and time selection.
 - Popup menus for concise option lists.
 - Custom AppBar Menu icons for added convenience.
